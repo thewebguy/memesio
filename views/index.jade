@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	.memeDisplay
+
+	.memeBuilder
+		canvas.memeImage
+		.memeTools
+			form.pure-form.pure-form-stacked
+				fieldset
+					legend Say something funny
+
+					label(for='memeTop') Top line
+					input#memeTop.memeTop
+
+					label(for='memeBottom') Bottom line
+					input#memeBottom.memeBottom
+					
+					div
+						br
+						input.memeCancel.pure-button(type='button', value='Cancel')
+						| 
+						input.memeSave.pure-button.pure-button-primary(type='button', value='Save')
+
+	.memeTemplates
+		- for (var i in memeTemplates)
+			a.memeTemplate(href='/' + memeTemplates[i].template)
+				img(src='/images/templates/' + memeTemplates[i].template + '_tn.jpg')
