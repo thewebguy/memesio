@@ -1,1 +1,3 @@
 node_modules/
+get.js
+config/aws.js
