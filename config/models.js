@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 	, ShortId = require('shortid')
 	, db;
 
-mongoose.connect('mongodb://localhost/memesio');
+mongoose.connect(MONGOHQ_URL || 'mongodb://localhost/memesio');
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
