@@ -10,7 +10,7 @@
     "jade": "*",
 		"mongoose": "*",
 		"shortid": "*",
-		"aws-sdk": "*",
-		"imagemagick": "*"
+		"imagemagick": "*",
+		"knox"
   }
 }
