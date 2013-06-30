@@ -11,6 +11,6 @@
 		"mongoose": "*",
 		"shortid": "*",
 		"imagemagick": "*",
-		"knox"
+		"knox": "*"
   }
 }
