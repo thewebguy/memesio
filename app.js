@@ -34,19 +34,18 @@ app.get('/:memeTemplate/meme-:memeId.json', memes.redirectMemeJSON);
 app.get('/:memeTemplate/meme-:memeId/:top.json', memes.redirectMemeJSON);
 app.get('/:memeTemplate/meme-:memeId/:top/:bottom.json', memes.displayMemeJSON);
 
-app.get('/:memeTemplate/meme-:memeId.png', memes.redirectMemeImage);
-app.get('/:memeTemplate/meme-:memeId/:top.png', memes.redirectMemeImage);
-app.get('/:memeTemplate/meme-:memeId/:top/:bottom.png', memes.redirectMemeImage);
+app.get('/:memeTemplate/meme-:memeId.jpg', memes.redirectMemeImage);
+app.get('/:memeTemplate/meme-:memeId/:top.jpg', memes.redirectMemeImage);
+app.get('/:memeTemplate/meme-:memeId/:top/:bottom.jpg', memes.redirectMemeImage);
 
 app.get('/', static.index);
+app.get('/wtf', static.index);
 app.get('/index', static.index);
 app.get('/about/:memeTemplate', memes.redirectMemeTemplateAbout);
 app.get('/:memeTemplate', static.index);
 
 app.get('/go/:memeId', memes.redirectMeme);
-app.get('/:memeTemplate/meme-:memeId', memes.redirectMeme);
-app.get('/:memeTemplate/meme-:memeId/:top', memes.redirectMeme);
-app.get('/:memeTemplate/meme-:memeId/:top/:bottom', static.index);
+app.get('/:memeTemplate/meme-:memeId/:top?/:bottom?', static.index);
 
 app.post('/:memeTemplate', memes.submitMeme);
 

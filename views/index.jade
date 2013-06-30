@@ -1,6 +1,38 @@
 extends layout
 
 block content
+	.wtf
+		h2 wtf is this?
+		p memes.io is the simplest ass meme generator there is
+
+		h2 why would i use this instead of like any other random ass meme generator out there?
+		p i don't know you so i have no idea, but there are two cool features:
+		ol
+			li adding <strong>.jpg</strong> to any meme URL redirects to a CDN hosted image, good for submitting to reddit and saving on server costs
+			li adding <strong>.json</strong> to any meme URL provides a JSON response with the following:
+				pre
+					| _id           the meme's unique identifier
+					| top           the top line of text
+					| bottom        the bottom line of text
+					| imageURL      url to the CDN hosted meme image
+					| memeTemplate  short name of the template used for the meme
+					| url           the memes.io URL for the meme
+
+		h2 who made this?
+		p <a href="http://kevin.fm">kevin khandjian</a> (that's me). however it would not have been nearly as easy without the following software:
+		ul
+			- for (var i in credits)
+				li #{credits[i].name} / #{credits[i].author} 
+					a.source(href=credits[i].source) Source
+
+		h2 what about the other tech?
+		p these things have been insanely helpful
+		ul
+			- for (var i in tech)
+				li 
+					a.source(href=tech[i].url)= tech[i].description
+		
+
 	.memeDisplay
 		.memeImage
 		.memeNavigate

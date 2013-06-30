@@ -1,6 +1,8 @@
 $(function(){
 	var $memeTemplates	= $('.memeTemplates')
 
+		, $wtf						= $('.wtf')
+		
 		, $memeDisplay		= $('.memeDisplay')
 		, $memeImage			= $memeDisplay.find('.memeImage')
 
@@ -15,6 +17,8 @@ $(function(){
 		, $memeNavigate		= $('.memeNavigate')
 		, $memeName				= $memeNavigate.find('.memeName')
 		, $memeContent		= $memeNavigate.find('.memeContent')
+		
+		, content					= [$memeTemplates, $wtf, $memeDisplay, $memeBuilder]
 
 		, memeURL					= ''
 		, memejs
@@ -36,6 +40,7 @@ $(function(){
 					break;
 					
 				case 1:
+					if (parts[0] == 'wtf') return showWTF();
 					return showTemplate(parts[0]);
 					break;
 					
@@ -59,16 +64,28 @@ $(function(){
 			window.setTimeout(function(){ $target.select(); }, 5);
 		}
 		
+		, showContent = function($show){
+			for (var i in content) {
+				if (content[i] == $show) {
+					console.log('yes');
+					$show.show(0);
+				} else {
+					console.log('no', content[i], $show);
+					content[i].hide(0);
+				}
+			}
+		}
+		
+		, showWTF = function(){
+			showContent($wtf);
+		}
+		
 		, showTemplates = function(){
-			$memeBuilder.hide(0);
-			$memeDisplay.hide(0);
-			$memeTemplates.show(0);
+			showContent($memeTemplates);
 		}
 		
 		, showTemplate = function(memeTemplate){
-			$memeDisplay.hide(0);
-			$memeTemplates.hide(0);
-			$memeBuilder.show(0);
+			showContent($memeBuilder);
 
 			memeURL = '/images/templates/' + memeTemplate + '.jpg';
 			memejs = new Meme(memeURL, $memeCanvas, $memeTop.val().toUpperCase(), $memeBottom.val().toUpperCase());
@@ -76,9 +93,7 @@ $(function(){
 		}
 		
 		, showMeme = function(memeTemplate, memeImage){
-			$memeTemplates.hide(0);
-			$memeBuilder.hide(0);
-			$memeDisplay.show(0);
+			showContent($memeDisplay);
 			
 			var memeName = memeTemplate.replace(/\-/g,' ').toLowerCase().replace(/(?:(^.{1})|\ [a-z]{1})/g, function(a){return a.toUpperCase();});
 			

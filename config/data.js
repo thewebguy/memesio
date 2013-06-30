@@ -479,3 +479,94 @@ exports.memeTemplates = [
 		desc: "http://knowyourmeme.com/memes/y-u-no-guy"
 	}
 ];
+
+exports.credits = [
+	{
+		name: 'Meme.js',
+		author: 'BuddyMeme',
+		source: 'https://github.com/BuddyMeme/Meme.js',
+	},
+	{
+		name: 'node.js',
+		author: 'Joyent, Inc',
+		source: 'https://github.com/joyent/node',
+	},
+	{
+		name: 'jQuery',
+		author: 'The jQuery Foundation',
+		source: 'https://github.com/jquery/jquery',
+	},
+	{
+		name: 'iomeme',
+		author: 'justinjpacheco',
+		source: 'https://github.com/justinjpacheco/iomeme',
+	},
+	{
+		name: 'Pure',
+		author: 'Yahoo! Inc',
+		source: 'https://github.com/yui/pure/',
+	},
+	{
+		name: 'Express',
+		author: 'TJ Holowaychuk',
+		source: 'https://github.com/visionmedia/express',
+	},
+	{
+		name: 'Jade',
+		author: 'TJ Holowaychuk',
+		source: 'https://github.com/visionmedia/jade',
+	},
+	{
+		name: 'Mongoose',
+		author: 'LearnBoost',
+		source: 'https://github.com/LearnBoost/mongoose',
+	},
+	{
+		name: 'ShortId',
+		author: 'Dylan Greene',
+		source: 'https://github.com/dylang/shortid',
+	},
+	{
+		name: 'node-imagemagick',
+		author: 'Rasmus Andersson',
+		source: 'https://github.com/rsms/node-imagemagick',
+	},
+	{
+		name: 'knox',
+		author: 'LearnBoost',
+		source: 'https://github.com/LearnBoost/knox',
+	},
+	{
+		name: 'MongoDB',
+		author: '10gen, Inc',
+		source: 'https://github.com/mongodb/mongo',
+	},
+	{
+		name: 'ImageMagick',
+		author: 'ImageMagick Studio LLC',
+		source: 'https://github.com/trevor/ImageMagick',
+	},
+];
+
+exports.tech = [
+	{
+		url: 'http://www.heroku.com',
+		description: 'App hosting by Heroku'
+	},
+	{
+		url: 'http://aws.amazon.com',
+		description: 'CDN by Amazon'
+	},
+	{
+		url: 'https://www.mongohq.com',
+		description: 'DB hosting by MongoHQ'
+	},
+	{
+		url: 'https://dnsimple.com/r/05f9299a747f48',
+		description: 'DNS by DNSimple'
+	},
+	{
+		url: 'http://iwantmyname.com',
+		description: 'Domain registration by iwantmyname'
+	}
+];

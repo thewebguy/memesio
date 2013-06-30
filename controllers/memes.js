@@ -89,7 +89,7 @@ exports.submitMeme = function(req, res){
 						if (err) return send("400");
 						
 				    if (resp.statusCode === 200) {
-							meme.imageURL = 'http://' + aws.bucket + '.s3.amazonaws.com/' + path.join(memeBasePath, memeFileNameJPG);
+							meme.imageURL = 'http://img1.memes.io/' + path.join(memeBasePath, memeFileNameJPG);
 						
 							meme.save(function(err, meme){
 								fs.unlink(memeLocalPath, function(err){
