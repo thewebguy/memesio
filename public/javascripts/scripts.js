@@ -1,13 +1,21 @@
 $(function(){
 	var $memeTemplates	= $('.memeTemplates')
-		, $memeBuilder		= $('.memeBuilder')
+
 		, $memeDisplay		= $('.memeDisplay')
-		, $memeImage			= $memeBuilder.find('.memeImage')
+		, $memeImage			= $memeDisplay.find('.memeImage')
+
+		, $memeBuilder		= $('.memeBuilder')
+		, $memeCanvas			= $memeBuilder.find('.memeCanvas')
 		, $memeTools			= $memeBuilder.find('.memeTools')
 		, $memeTop				= $memeTools.find('.memeTop')
 		, $memeBottom			= $memeTools.find('.memeBottom')
 		, $memeSave				= $memeTools.find('.memeSave')
 		, $memeCancel			= $memeTools.find('.memeCancel')
+
+		, $memeNavigate		= $('.memeNavigate')
+		, $memeName				= $memeNavigate.find('.memeName')
+		, $memeContent		= $memeNavigate.find('.memeContent')
+
 		, memeURL					= ''
 		, memejs
 		, History = window.History
@@ -32,9 +40,23 @@ $(function(){
 					break;
 					
 				case 2:
+				case 3:
+				case 4:
 					return showMeme(parts[0], parts[1].replace('meme-',''));
 					break;
 			}
+		}
+		
+		, parseUrl = function(url){
+			var a = document.createElement('a');
+			a.href = url;
+			return a;
+		}
+		
+		, selectInputContents = function(e){
+			e.preventDefault();
+			var $target = $(e.target);
+			window.setTimeout(function(){ $target.select(); }, 5);
 		}
 		
 		, showTemplates = function(){
@@ -49,7 +71,7 @@ $(function(){
 			$memeBuilder.show(0);
 
 			memeURL = '/images/templates/' + memeTemplate + '.jpg';
-			memejs = new Meme(memeURL, $memeImage, $memeTop.val().toUpperCase(), $memeBottom.val().toUpperCase());
+			memejs = new Meme(memeURL, $memeCanvas, $memeTop.val().toUpperCase(), $memeBottom.val().toUpperCase());
 			$memeTop.select();
 		}
 		
@@ -58,7 +80,29 @@ $(function(){
 			$memeBuilder.hide(0);
 			$memeDisplay.show(0);
 			
-			$memeDisplay.html('<img src="/images/memes/' + memeTemplate + '/' + memeImage + '.png">');
+			var memeName = memeTemplate.replace(/\-/g,' ').toLowerCase().replace(/(?:(^.{1})|\ [a-z]{1})/g, function(a){return a.toUpperCase();});
+			
+			$memeName.html(
+				memeName + 
+				' <a href="/about/' + memeTemplate + '"><i class="icon icon-question-sign"></i></a>'
+			);
+			$memeImage.html('<img src="//img1.memes.io/memes/' + memeTemplate + '/' + memeImage + '.jpg">');
+			$memeContent.html(
+				'<a href="/' + memeTemplate + '" class="makeYourOwn pure-button pure-button-primary">Make your own ' + memeName + ' meme</a><br><br>' +
+				'<a href="/" class="makeYourOwn pure-button">Make another meme</a> '
+			);
+			
+			$.getJSON(window.location.pathname + '.json', function(meme, status){
+				if (status == 'success') {
+					$memeContent.html(
+						meme.top + '<br>' +
+						meme.bottom + '<br><br>' +
+						
+						'Share: <input class="memeShareURL" type="text" value="' + meme.url + '" readonly="readonly"><br><br>' +
+						$memeContent.html()
+					);
+				}
+			});
 		}
 		
 		, updateMeme = function(){
@@ -94,8 +138,10 @@ $(function(){
 						console.log(xhr);
 						return;
 					}
-					var meme = xhr.responseJSON;
-					History.pushState({}, 'memes.io', meme.memeTemplate + '/meme-' + meme._id);
+					var meme = xhr.responseJSON
+						, url = parseUrl(meme.url).pathname;
+					
+					History.pushState({}, 'memes.io', url);
 				}
 			});
 		};
@@ -105,14 +151,17 @@ $(function(){
 		init();
 	});
 		
-	$memeTop		.on('keyup keydown', updateMeme);
-	$memeBottom	.on('keyup keydown', updateMeme);
+	$memeTop			.on('keyup keydown', updateMeme);
+	$memeBottom		.on('keyup keydown', updateMeme);
 	
 	$('header')		.on('click', 'a', clickHandler);
 	$memeTemplates.on('click', 'a.memeTemplate', clickHandler);
+	$memeContent	.on('click', 'a.makeYourOwn', clickHandler);
 	
-	$memeSave		.on('click', saveMeme);
-	$memeCancel	.on('click', cancelMeme);
+	$memeSave			.on('click', saveMeme);
+	$memeCancel		.on('click', cancelMeme);
+	
+	$memeNavigate	.on('click focus', '.memeShareURL', selectInputContents);
 	
 	init();
 });

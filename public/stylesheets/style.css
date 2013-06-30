@@ -26,17 +26,30 @@ footer,
 .memeBuilder {
 	display: none;
 }
-.memeImage {
+.memeImage,
+.memeCanvas {
 	margin-right: 1em;
 }
 .memeTools {
 	width: 250px;
 }
 .memeImage,
+.memeCanvas,
 .memeTools {
 	float: left;
 }
 
 .memeDisplay {
 	display: none;
+}
+
+a .icon {
+	text-decoration: none;
+}
+
+.memeShareURL {
+	display: inline !important;
+	cursor: text !important;
+	background: #fff !important;
+	color: #555 !important;
 }

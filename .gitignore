@@ -1,4 +1,4 @@
 node_modules/
 get.js
-config/aws.js
+config/aws-secret.js
 public/images/memes/

@@ -2,19 +2,25 @@ extends layout
 
 block content
 	.memeDisplay
+		.memeImage
+		.memeNavigate
+			form.pure-form.pure-form-stacked
+				fieldset
+					legend.memeName 
+					.memeContent
 
 	.memeBuilder
-		canvas.memeImage
+		canvas.memeCanvas
 		.memeTools
 			form.pure-form.pure-form-stacked
 				fieldset
 					legend Say something funny
 
-					label(for='memeTop') Top line
-					input#memeTop.memeTop
+					label(for='memeToolsTop') Top line
+					input#memeToolsTop.memeTop
 
-					label(for='memeBottom') Bottom line
-					input#memeBottom.memeBottom
+					label(for='memeToolsBottom') Bottom line
+					input#memeToolsBottom.memeBottom
 					
 					div
 						br
@@ -25,4 +31,4 @@ block content
 	.memeTemplates
 		- for (var i in memeTemplates)
 			a.memeTemplate(href='/' + memeTemplates[i].template)
-				img(src='/images/templates/' + memeTemplates[i].template + '_tn.jpg')
+				img(src='//img' + (1 + (i % 5)) + '.memes.io/templates/' + memeTemplates[i].template + '_tn.jpg')

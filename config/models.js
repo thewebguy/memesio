@@ -12,7 +12,8 @@ db.once('open', function callback () {
 		top: String,
 		bottom: String,
 		memeTemplate: String,
-		imageURL: String
+		imageURL: String,
+		url: String
 	});
 	
 	exports.Meme = mongoose.model('Meme', memeSchema);
