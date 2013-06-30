@@ -32,8 +32,6 @@ $(function(){
 			if (path) path = path.replace('/index','').replace('/','');
 			if (path.length) parts = path.split('/');
 			
-			console.log(path, parts);
-			
 			switch (parts.length) {
 				case 0:
 					return showTemplates();
@@ -67,10 +65,8 @@ $(function(){
 		, showContent = function($show){
 			for (var i in content) {
 				if (content[i] == $show) {
-					console.log('yes');
 					$show.show(0);
 				} else {
-					console.log('no', content[i], $show);
 					content[i].hide(0);
 				}
 			}
@@ -158,7 +154,6 @@ $(function(){
 				dataType: 'json',
 				complete: function(xhr, status) {
 					if (status != 'success') {
-						console.log(xhr);
 						return;
 					}
 					var meme = xhr.responseJSON
