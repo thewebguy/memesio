@@ -86,6 +86,10 @@ $(function(){
 		
 		, showTemplate = function(memeTemplate){
 			showContent($memeBuilder);
+			
+			$memeSave
+				.removeAttr('disabled')
+				.attr('value', 'Save')
 
 			memeURL = '/images/templates/' + memeTemplate + '.jpg';
 			memejs = new Meme(memeURL, $memeCanvas, $memeTop.val().toUpperCase(), $memeBottom.val().toUpperCase());
@@ -136,6 +140,10 @@ $(function(){
 		
 		, saveMeme = function(e){
 			e.preventDefault();
+			
+			$memeSave
+				.attr('disabled', 'disabled')
+				.attr('value', 'Saving...')
 		
 			var data = {
 				imgdata:	memejs.getPNG(),
