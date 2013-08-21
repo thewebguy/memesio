@@ -2,3 +2,4 @@ node_modules/
 get.js
 config/aws-secret.js
 public/images/memes/
+npm-debug.log
