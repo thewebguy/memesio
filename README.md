@@ -1,15 +1,17 @@
-# memes.io
-## the simplest ass meme generator there is
+## memes.io - the simplest ass meme generator there is
 This is a super simple way to launch a memes website. Overview of resourced used at http://memes.io/wtf
 
-# Features
+## Demo
+See this baby live at [memes.io](http://memes.io)
+
+## Features
 * Simple meme generation
 * Client side image creation
 * Free `.jpg` redirection to CDN image
 * Free `.json` API for reading meme text (helpful for reddit bots)
 * Mostly single page app
 
-# Using this thing
+## Using this thing
 Grab the repo, cd into it and install the node_modules you'll need:
 ```    
 git clone https://github.com/thewebguy/memesio.git
@@ -27,5 +29,5 @@ node app
 ```
 Then make it better and send me a pull request :)
 
-# License
+## License
 MIT: http://thewebguy.mit-license.org
